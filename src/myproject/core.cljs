@@ -8,11 +8,13 @@
 
 (defonce click-count (r/atom 0))
 
+(def sayHello js/hello.)
+
 (defn home-page []
   [:div
     [:h2 "Welcome to Reagent"]
     [:p "Just playin around..."]
-    [:input {:type "button" :value "click this" :on-click #(swap! click-count inc)}]
+    [:input {:type "button" :value "click this" :on-click #(do(swap! click-count inc)(println "button clicked")(sayHello))}]
     [:p "i've been clicked for: " @click-count]
   ]
 )
